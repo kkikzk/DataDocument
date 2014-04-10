@@ -10,98 +10,104 @@ require './StringParser'
 
 class DocParser < Racc::Parser
 
-module_eval(<<'...end DocParser.y/module_eval...', 'DocParser.y', 86)
+module_eval(<<'...end DocParser.y/module_eval...', 'DocParser.y', 89)
   def parse(str)
-		@sc = DataDocument::StringParser::Scanner.new(str)
+    @sc = DataDocument::StringParser::Scanner.new(str)
     do_parse()
   end
 
   def next_token()
-		@sc.popToken
+    @sc.popToken
   end
 ...end DocParser.y/module_eval...
 ##### State transition tables begin ###
 
 racc_action_table = [
-    72,    72,     9,    76,     6,    42,    43,    44,     5,    75,
-    20,    10,     5,    60,    67,    66,    39,     5,    22,    13,
-    24,     5,    28,    29,    30,    31,    73,    73,    48,    49,
-    50,    51,    52,    53,    54,    55,    56,    57,    58,    59,
-    32,    33,    19,     5,    38,    18,    17,    45,    16,    62,
-    64,    65,    15,    69,    14,    74,    13,    77,    78,    79,
-    80,    81,     5,    83 ]
+    59,    74,    74,     7,     8,    79,     8,     8,    29,    41,
+    61,    78,     9,    20,     8,    47,    48,    49,    50,    51,
+    52,    53,    54,    55,    56,    57,    58,    75,    75,    38,
+    39,    40,    69,    68,    13,    25,    26,    27,    28,    17,
+    30,    31,    35,    16,    18,    43,    15,    14,    63,    65,
+    66,    67,    13,    71,    10,    77,     2,    80,    81,    82,
+    83,    84,    85,     6,    87 ]
 
 racc_action_check = [
-    64,    78,     4,    69,     1,    36,    36,    36,    28,    69,
-    15,     4,     1,    41,    62,    62,    34,    34,    16,    18,
-    19,    20,    21,    22,    24,    25,    64,    78,    41,    41,
-    41,    41,    41,    41,    41,    41,    41,    41,    41,    41,
-    26,    27,    13,    32,    33,    12,    11,    38,    10,    46,
-    47,    61,     9,    63,     6,    68,     5,    70,    71,    72,
-    73,    76,     0,    79 ]
+    37,    81,    65,     5,    44,    71,     5,    32,    22,    33,
+    44,    71,     5,    14,    22,    37,    37,    37,    37,    37,
+    37,    37,    37,    37,    37,    37,    37,    81,    65,    32,
+    32,    32,    63,    63,    17,    18,    19,    20,    21,    12,
+    23,    25,    29,    11,    13,    35,    10,     9,    45,    46,
+    61,    62,     8,    64,     7,    70,     1,    72,    73,    74,
+    75,    76,    79,     2,    82 ]
 
 racc_action_pointer = [
-    54,     4,   nil,   nil,    -3,    54,    54,   nil,   nil,    50,
-    46,    37,    35,    31,   nil,     4,     3,   nil,    17,    18,
-    13,    16,    21,   nil,    12,    18,    30,    39,     0,   nil,
-   nil,   nil,    35,    31,     9,   nil,   -25,   nil,    44,   nil,
-   nil,    11,   nil,   nil,   nil,   nil,    36,    39,   nil,   nil,
+   nil,    56,    63,   nil,   nil,    -2,   nil,    52,    50,    45,
+    40,    34,    29,    33,    -2,   nil,   nil,    32,    33,    30,
+    35,    31,     6,    30,   nil,    29,   nil,   nil,   nil,    29,
+   nil,   nil,    -1,     2,   nil,    42,   nil,    -2,   nil,   nil,
+   nil,   nil,   nil,   nil,    -4,    35,    38,   nil,   nil,   nil,
    nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
-   nil,    35,    12,    45,    -3,   nil,   nil,   nil,    53,     0,
-    45,    48,    30,    57,   nil,   nil,    52,   nil,    -2,    60,
-   nil,   nil,   nil,   nil ]
+   nil,    44,    35,    30,    45,    -1,   nil,   nil,   nil,   nil,
+    53,     2,    45,    48,    30,    57,    54,   nil,   nil,    53,
+   nil,    -2,    61,   nil,   nil,   nil,   nil,   nil ]
 
 racc_action_default = [
-    -6,    -6,    -1,    -2,   -51,   -51,   -51,    -3,    -4,   -51,
-   -51,   -51,    -8,   -51,    84,   -51,   -15,    -7,   -51,   -51,
-    -6,   -51,   -51,    -9,   -51,   -51,   -11,   -51,    -6,   -16,
-   -10,    -5,    -6,   -51,    -6,   -17,   -51,   -12,   -51,   -14,
-   -18,   -51,   -48,   -49,   -50,   -13,   -45,   -34,   -21,   -22,
+    -1,    -5,   -52,    -2,    -3,   -52,    88,   -52,   -52,   -52,
+   -52,   -52,    -7,   -52,   -14,    -5,    -6,   -52,   -52,   -52,
+   -52,   -52,   -52,   -10,    -8,   -52,    -5,   -15,    -4,   -52,
+    -5,    -9,   -52,    -5,   -16,   -52,   -11,    -5,   -49,   -50,
+   -51,   -13,   -17,   -12,   -52,   -46,   -35,   -20,   -21,   -22,
    -23,   -24,   -25,   -26,   -27,   -28,   -29,   -30,   -31,   -32,
-   -33,   -51,   -51,   -42,   -51,   -19,   -46,   -47,   -51,   -51,
-   -51,   -36,   -41,   -51,   -20,   -43,   -51,   -35,   -51,   -39,
-   -40,   -44,   -37,   -38 ]
+   -33,   -52,   -52,   -52,   -43,   -52,    -5,   -18,   -47,   -48,
+   -52,   -52,   -52,   -37,   -42,   -52,    -5,   -19,   -44,   -52,
+   -36,   -52,   -40,   -41,   -34,   -45,   -38,   -39 ]
 
 racc_goto_table = [
-    70,    27,    35,    11,    46,    25,     3,     8,    40,    36,
-     2,     7,    21,    27,    82,    36,    23,    37,    41,    34,
-    61,    47,    63,    68,     1 ]
+    42,    33,     5,    72,    11,    21,    45,     4,     3,    37,
+    19,    62,    46,    24,    64,    70,    22,    60,     1,    86,
+    36,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
+   nil,    22,   nil,   nil,   nil,   nil,   nil,   nil,    44,   nil,
+   nil,    76,   nil,    42 ]
 
 racc_goto_check = [
-    18,     4,    11,     6,    13,     5,     3,     3,    11,     4,
-     2,     2,     9,     4,    18,     4,     6,     5,    12,    10,
-    14,    15,    16,    17,     1 ]
+    11,    10,     4,    19,     6,     5,    13,     3,     2,    12,
+     9,    14,    15,     6,    16,    17,     4,    18,     1,    19,
+     5,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
+   nil,     4,   nil,   nil,   nil,   nil,   nil,   nil,     4,   nil,
+   nil,    10,   nil,    11 ]
 
 racc_goto_pointer = [
-   nil,    24,    10,     6,   -19,   -15,    -2,   nil,   nil,    -4,
-    -9,   -26,   -18,   -37,   -26,   -20,   -25,   -40,   -64,   nil ]
+   nil,    18,     7,     6,     1,   -10,    -4,   nil,   nil,    -4,
+   -25,   -33,   -23,   -31,   -34,   -25,   -32,   -49,   -20,   -62,
+   nil ]
 
 racc_goto_default = [
-   nil,   nil,   nil,   nil,     4,   nil,   nil,    12,    26,   nil,
-   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,    71 ]
+   nil,   nil,   nil,   nil,    32,   nil,   nil,    12,    23,   nil,
+   nil,    34,   nil,   nil,   nil,   nil,   nil,   nil,   nil,   nil,
+    73 ]
 
 racc_reduce_table = [
   0, 0, :racc_error,
-  1, 34, :_reduce_none,
-  1, 34, :_reduce_none,
+  0, 34, :_reduce_none,
   2, 34, :_reduce_none,
   2, 34, :_reduce_none,
-  6, 35, :_reduce_5,
-  0, 37, :_reduce_6,
-  3, 37, :_reduce_7,
-  1, 39, :_reduce_8,
-  3, 39, :_reduce_9,
-  4, 40, :_reduce_10,
-  1, 38, :_reduce_11,
-  3, 38, :_reduce_12,
-  4, 41, :_reduce_13,
-  7, 36, :_reduce_14,
-  0, 42, :_reduce_15,
-  2, 42, :_reduce_16,
-  1, 43, :_reduce_17,
-  2, 43, :_reduce_18,
-  5, 44, :_reduce_19,
-  4, 46, :_reduce_20,
+  6, 35, :_reduce_4,
+  0, 37, :_reduce_5,
+  4, 37, :_reduce_6,
+  1, 39, :_reduce_7,
+  3, 39, :_reduce_8,
+  4, 40, :_reduce_9,
+  1, 38, :_reduce_10,
+  3, 38, :_reduce_11,
+  4, 41, :_reduce_12,
+  7, 36, :_reduce_13,
+  0, 42, :_reduce_14,
+  2, 42, :_reduce_15,
+  1, 43, :_reduce_16,
+  2, 43, :_reduce_17,
+  5, 44, :_reduce_18,
+  4, 46, :_reduce_19,
+  1, 48, :_reduce_20,
   1, 48, :_reduce_21,
   1, 48, :_reduce_22,
   1, 48, :_reduce_23,
@@ -115,27 +121,28 @@ racc_reduce_table = [
   1, 48, :_reduce_31,
   1, 48, :_reduce_32,
   1, 48, :_reduce_33,
-  0, 49, :_reduce_34,
-  3, 49, :_reduce_35,
-  1, 51, :_reduce_36,
-  3, 51, :_reduce_37,
+  5, 51, :_reduce_34,
+  0, 49, :_reduce_35,
+  3, 49, :_reduce_36,
+  1, 52, :_reduce_37,
   3, 52, :_reduce_38,
-  2, 52, :_reduce_39,
-  2, 52, :_reduce_40,
-  1, 52, :_reduce_41,
-  0, 50, :_reduce_42,
-  2, 50, :_reduce_43,
-  3, 50, :_reduce_44,
-  0, 47, :_reduce_45,
-  2, 47, :_reduce_46,
+  3, 53, :_reduce_39,
+  2, 53, :_reduce_40,
+  2, 53, :_reduce_41,
+  1, 53, :_reduce_42,
+  0, 50, :_reduce_43,
+  2, 50, :_reduce_44,
+  3, 50, :_reduce_45,
+  0, 47, :_reduce_46,
   2, 47, :_reduce_47,
-  1, 45, :_reduce_48,
+  2, 47, :_reduce_48,
   1, 45, :_reduce_49,
-  1, 45, :_reduce_50 ]
+  1, 45, :_reduce_50,
+  1, 45, :_reduce_51 ]
 
-racc_reduce_n = 51
+racc_reduce_n = 52
 
-racc_shift_n = 84
+racc_shift_n = 88
 
 racc_token_table = {
   false => 0,
@@ -244,6 +251,7 @@ Racc_token_to_s_table = [
   "type_define",
   "condition_define",
   "array_define",
+  "unnamed_struct",
   "condition_decl",
   "each_condition_decl" ]
 
@@ -259,200 +267,205 @@ Racc_debug_parser = false
 
 # reduce 3 omitted
 
-# reduce 4 omitted
-
-module_eval(<<'.,.,', 'DocParser.y', 12)
-  def _reduce_5(val, _values, result)
+module_eval(<<'.,.,', 'DocParser.y', 11)
+  def _reduce_4(val, _values, result)
      result = DataDocument::ParseResult::Enum.new(val[0], val[2], val[4]) 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 13)
+  def _reduce_5(val, _values, result)
+     result = [] 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 14)
   def _reduce_6(val, _values, result)
-     result = [] 
+     result = val[0] + val[2] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 15)
+module_eval(<<'.,.,', 'DocParser.y', 16)
   def _reduce_7(val, _values, result)
-     result = val[1] 
+     result = [val[0]] 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 17)
   def _reduce_8(val, _values, result)
-     result = [val[0]] 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 18)
-  def _reduce_9(val, _values, result)
      val[2].insert(0, val[0]); result = val[2] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 20)
-  def _reduce_10(val, _values, result)
+module_eval(<<'.,.,', 'DocParser.y', 19)
+  def _reduce_9(val, _values, result)
      result = val[0] + '=' + val[2] 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 21)
+  def _reduce_10(val, _values, result)
+     result = [val[0]] 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 22)
   def _reduce_11(val, _values, result)
-     result = [val[0]] 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 23)
-  def _reduce_12(val, _values, result)
      val[2].insert(0, val[0]); result = val[2] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 26)
-  def _reduce_13(val, _values, result)
+module_eval(<<'.,.,', 'DocParser.y', 25)
+  def _reduce_12(val, _values, result)
      result = DataDocument::ParseResult::EnumElement.new(val[0], val[1], val[3]) 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 29)
-  def _reduce_14(val, _values, result)
+module_eval(<<'.,.,', 'DocParser.y', 28)
+  def _reduce_13(val, _values, result)
      result = DataDocument::ParseResult::Struct.new(val[0], val[2], val[3], val[5]) 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 30)
+  def _reduce_14(val, _values, result)
+     result = nil 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 31)
   def _reduce_15(val, _values, result)
-     result = nil 
+     result = val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 32)
+module_eval(<<'.,.,', 'DocParser.y', 33)
   def _reduce_16(val, _values, result)
-     result = val[1] 
+     result = [val[0]] 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 34)
   def _reduce_17(val, _values, result)
-     result = [val[0]] 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 35)
-  def _reduce_18(val, _values, result)
      val[0].push(val[1]); result = val[0] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 38)
-  def _reduce_19(val, _values, result)
+module_eval(<<'.,.,', 'DocParser.y', 37)
+  def _reduce_18(val, _values, result)
      result = DataDocument::ParseResult::StructElement.new(val[0], val[1], val[2][0], val[2][1], val[2][2], val[2][3], val[3]) 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 41)
-  def _reduce_20(val, _values, result)
+module_eval(<<'.,.,', 'DocParser.y', 40)
+  def _reduce_19(val, _values, result)
      result = [val[0], val[1], val[2], val[3]] 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 42)
+  def _reduce_20(val, _values, result)
+     result = DataDocument::ParseResult::DataType::INT64 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 43)
   def _reduce_21(val, _values, result)
-     result = DataDocument::ParseResult::DataType::INT64 
+     result = DataDocument::ParseResult::DataType::INT32 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 44)
   def _reduce_22(val, _values, result)
-     result = DataDocument::ParseResult::DataType::INT32 
+     result = DataDocument::ParseResult::DataType::INT16 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 45)
   def _reduce_23(val, _values, result)
-     result = DataDocument::ParseResult::DataType::INT16 
+     result = DataDocument::ParseResult::DataType::INT8 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 46)
   def _reduce_24(val, _values, result)
-     result = DataDocument::ParseResult::DataType::INT8 
+     result = DataDocument::ParseResult::DataType::UINT64 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 47)
   def _reduce_25(val, _values, result)
-     result = DataDocument::ParseResult::DataType::UINT64 
+     result = DataDocument::ParseResult::DataType::UINT32 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 48)
   def _reduce_26(val, _values, result)
-     result = DataDocument::ParseResult::DataType::UINT32 
+     result = DataDocument::ParseResult::DataType::UINT16 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 49)
   def _reduce_27(val, _values, result)
-     result = DataDocument::ParseResult::DataType::UINT16 
+     result = DataDocument::ParseResult::DataType::UINT8 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 50)
   def _reduce_28(val, _values, result)
-     result = DataDocument::ParseResult::DataType::UINT8 
+     result = DataDocument::ParseResult::DataType::BOOL 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 51)
   def _reduce_29(val, _values, result)
-     result = DataDocument::ParseResult::DataType::BOOL 
+     result = DataDocument::ParseResult::DataType::FLOAT 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 52)
   def _reduce_30(val, _values, result)
-     result = DataDocument::ParseResult::DataType::FLOAT 
+     result = DataDocument::ParseResult::DataType::DOUBLE 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 53)
   def _reduce_31(val, _values, result)
-     result = DataDocument::ParseResult::DataType::DOUBLE 
+     result = DataDocument::ParseResult::DataType::STRING 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 54)
   def _reduce_32(val, _values, result)
-     result = DataDocument::ParseResult::DataType::STRING 
+     result = val[0] 
     result
   end
 .,.,
@@ -464,120 +477,127 @@ module_eval(<<'.,.,', 'DocParser.y', 55)
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 57)
-  def _reduce_34(val, _values, result)
-     result = nil 
-    result
-  end
-.,.,
-
 module_eval(<<'.,.,', 'DocParser.y', 58)
-  def _reduce_35(val, _values, result)
-     result = val[1] 
+  def _reduce_34(val, _values, result)
+     result = DataDocument::ParseResult::Struct.new(val[0], 'unnamed', nil, val[3]) 
     result
   end
 .,.,
 
 module_eval(<<'.,.,', 'DocParser.y', 60)
-  def _reduce_36(val, _values, result)
-     result = [val[0]] 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 61)
-  def _reduce_37(val, _values, result)
-     val[2].insert(0, val[0]); result = val[2] 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 63)
-  def _reduce_38(val, _values, result)
-     result = val[0].to_s + '..' + val[2].to_s 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 64)
-  def _reduce_39(val, _values, result)
-     result = val[0].to_s + '..Max' 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 65)
-  def _reduce_40(val, _values, result)
-     result = '0..' + val[1].to_s 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 66)
-  def _reduce_41(val, _values, result)
-     result = val[0].to_s + '..' + val[0].to_s 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 68)
-  def _reduce_42(val, _values, result)
-     result = 1 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 69)
-  def _reduce_43(val, _values, result)
-     result = -1 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 70)
-  def _reduce_44(val, _values, result)
-     result = val[1] 
-    result
-  end
-.,.,
-
-module_eval(<<'.,.,', 'DocParser.y', 72)
-  def _reduce_45(val, _values, result)
+  def _reduce_35(val, _values, result)
      result = nil 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 73)
-  def _reduce_46(val, _values, result)
+module_eval(<<'.,.,', 'DocParser.y', 61)
+  def _reduce_36(val, _values, result)
      result = val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 74)
+module_eval(<<'.,.,', 'DocParser.y', 63)
+  def _reduce_37(val, _values, result)
+     result = [val[0]] 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 64)
+  def _reduce_38(val, _values, result)
+     val[2].insert(0, val[0]); result = val[2] 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 66)
+  def _reduce_39(val, _values, result)
+     result = val[0].to_s + '..' + val[2].to_s 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 67)
+  def _reduce_40(val, _values, result)
+     result = val[0].to_s + '..Max' 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 68)
+  def _reduce_41(val, _values, result)
+     result = '0..' + val[1].to_s 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 69)
+  def _reduce_42(val, _values, result)
+     result = val[0].to_s + '..' + val[0].to_s 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 71)
+  def _reduce_43(val, _values, result)
+     result = 1 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 72)
+  def _reduce_44(val, _values, result)
+     result = -1 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 73)
+  def _reduce_45(val, _values, result)
+     result = val[1] 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 75)
+  def _reduce_46(val, _values, result)
+     result = nil 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 76)
   def _reduce_47(val, _values, result)
      result = val[1] 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 76)
+module_eval(<<'.,.,', 'DocParser.y', 77)
   def _reduce_48(val, _values, result)
+     result = val[1] 
+    result
+  end
+.,.,
+
+module_eval(<<'.,.,', 'DocParser.y', 79)
+  def _reduce_49(val, _values, result)
      result = DataDocument::ParseResult::OptionType::REQUIRED 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 77)
-  def _reduce_49(val, _values, result)
+module_eval(<<'.,.,', 'DocParser.y', 80)
+  def _reduce_50(val, _values, result)
      result = DataDocument::ParseResult::OptionType::OPTIONAL 
     result
   end
 .,.,
 
-module_eval(<<'.,.,', 'DocParser.y', 78)
-  def _reduce_50(val, _values, result)
+module_eval(<<'.,.,', 'DocParser.y', 81)
+  def _reduce_51(val, _values, result)
      result = DataDocument::ParseResult::OptionType::RESERVED 
     result
   end
